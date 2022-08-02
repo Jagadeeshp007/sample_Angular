@@ -1,0 +1,22 @@
+<p>test1 works!</p>
+<div class="container">
+    <input type="text" [(ngModel)]="name">
+    <select [(ngModel)]="activeBox">
+        <option value="">select any one</option>
+        <option value="1">one</option>
+        <option value="2">Two</option>
+    </select>
+    {{activeBox}}
+</div>
+<br/>
+<div class="container-2">
+    <div [ngClass]="{'text-white': activeBox=='1'}"
+        [ngStyle]="{'background-color': (activeBox)==='1' ? 'green':'red'}">
+        {{name}}
+    </div>
+    <div [ngClass]="{'text-white': activeBox=='2'}"
+        [ngStyle]="{'background-color': (activeBox)==='2' ? 'green':'red'}">
+
+        {{name}}
+    </div>
+</div>

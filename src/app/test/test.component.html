@@ -1,0 +1,11 @@
+<h3>test component</h3>
+<p>test works!</p>
+<p>{{name}}</p>
+<input type="text" [value]="name" placeholder="{{placeholder}}" [disabled]="disabled"/> 
+<!-- {{(disabled) ? true : false}} -->
+<input type="text"(keypress)="typeMsg($event)" />
+<br/>
+<button (cick)="btnClick()">clik me</button>
+<br>
+<input type="text" [(ngModel)]="details" />
+{{details}}

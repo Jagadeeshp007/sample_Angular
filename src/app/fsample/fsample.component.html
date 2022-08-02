@@ -1,0 +1,57 @@
+<!-- <div>
+    <p>fsample works!</p>
+    <input type="text" name="email" [formControl]="email" />
+    <p class="text-danger" *ngIf="email.errors?.['minlength']" >minimum 2 character should be there</p>
+    <p class="text-danger" *ngIf="email.errors?.['maxlength']">maximum 10 character</p>
+    <p class="text-danger" *ngIf="email.errors?.['required']">Email is required</p>
+    <button (click)="emailValid()">click me</button>
+</div> -->
+
+<div>
+    <form [formGroup]="fg" (ngSubmit)="submitBtn()">
+        <table class="table">
+            <tr>
+                <th><label *ngIf="username">User Name</label></th>
+                <td> <input type="text" formControlName="userName" *ngIf="username" /></td>
+            </tr>
+            <tr>
+                <th> <label>Email</label></th>
+                <td> <input type="text" formControlName="userEmail" /></td>
+            </tr>
+            <tr>
+                <th> <label>Password</label></th>
+                <td> <input type="text" formControlName="userPass" /></td>
+            </tr>
+            <tr>
+                <th> <button (click)="addField()">Add Field</button></th>
+                <th> <button (click)="removeField()">Remove Field</button></th>
+            </tr>
+            <ul formArrayName="mobile">
+                <li *ngFor="let mob of mobileM.controls; let i=index">
+                    <label>Mobile {{i+1}}</label>
+                    <input type="text" placeholder="123456" [formControlName]='i' />
+                    <p class="red" *ngIf="mobileM.controls[i].errors?.['required']">mobile number is required
+                    </p>
+                </li>
+            </ul>
+            <button (click)="addMobile()">Add Mobile Number</button>
+            <br />
+            <ul formArrayName="address">
+                <li *ngFor="let mob of addressA.controls; let i=index" [formGroupName]="i">
+                    <label>Address {{i+1}}</label>
+                    <input type="text" placeholder="Door No" formControlName="doorNo" />
+                    <input type="text" placeholder="Street" formControlName="street" />
+                    <p class="red" *ngIf="addressA.controls[i].get('doorNo')?.errors?.['required']">Door No is required
+                    </p>
+                    <p class="red" *ngIf="addressA.controls[i].get('street')?.errors?.['required']">Street is required
+                    </p>
+                    <button (click)="removeAdd(i)">Delete</button>
+                </li>
+            </ul>
+            <button (click)="addAddress()">Add Address</button>
+            <tr>
+                <th colspan="2"><button class="btn" type="submit">submit</button></th>
+            </tr>
+        </table>
+    </form>
+</div>
